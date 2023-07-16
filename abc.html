@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;500;600;700&family=Great+Vibes&family=Poppins:ital,wght@0,200;1,100;1,200;1,300&family=Roboto:wght@100&display=swap" rel="stylesheet">
+
+<style>
+        .slideshow {
+  width: 100%;
+  height: 300px; /* Adjust the height as needed */
+  position: relative;
+  overflow: hidden;
+}
+
+.slide {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  opacity: 0;
+  animation: slideShow 12s ;
+  font-family: 'Dancing Script', cursive;
+font-family: 'Great Vibes', cursive;
+/* font-family: 'Poppins', sans-serif;
+font-family: 'Roboto', sans-serif; */
+
+font-size: 32px;
+  /* background-color: pink; */
+}
+
+.slide:nth-child(2) {
+  animation-delay: 4s;
+  /* background-color: green; */
+}
+
+.slide:nth-child(3) {
+  animation-delay: 8s;
+  /* background-color: orange; */
+}
+
+@keyframes slideShow {
+  0% {
+    opacity: 0;
+  }
+  5% {
+    opacity: 1;
+  }
+  20% {
+    opacity: 1;
+  }
+  25% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+    </style>
+    
+</head>
+<body>
+    <div class="slideshow">
+        <div class="slide">
+          Hi !! This is Rajat Kumar
+        </div>
+        <div class="slide">
+          A front End Developer
+        </div>
+        <div class="slide">
+          A Problem Solver
+        </div>
+      </div>
+</body>
+</html>
