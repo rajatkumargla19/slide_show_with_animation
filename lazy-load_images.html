@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .container{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.child{
+  width: 300px;
+  height: 300px;
+  /* border: 1px solid #444; */
+  margin: 20px;
+  background:none;
+  border:none;
+}
+img{
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+}
+
+
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="child">
+          <img src="./images/back.png" data-src="./images/nature 1.jpg" class="images" />
+        </div>
+        <div class="child">
+          <img src="./images/back.png" data-src="./images/nature 2.jfif" class="images"/>
+        </div>
+        <div class="child">
+          <img src="./images/back.png" data-src="./images/nature 3.jpeg" class="images"/>
+        </div>
+        <div class="child">
+          <img src="./images/back.png" data-src="./images/nature 4.jpg" class="images"/>
+        </div>
+        <div class="child">
+          <img src="./images/back.png" data-src="./images/nature 5.jpg" class="images"/>
+        </div>
+        <div class="child">
+          <img src="./images/back.png" data-src="./images/nature 6.jpg" class="images"/>
+        </div>
+
+        <div class="child">
+            <img src="./images/back.png" data-src="./images/nature 7.jpg" class="images"/>
+          </div>
+
+          <div class="child">
+            <img src="./images/back.png" data-src="./images/nature 8.jfif" class="images"/>
+          </div>
+          <div class="child">
+            <img src="./images/back.png" data-src="./images/nature 9.jpg" class="images"/>
+          </div>
+
+          <div class="child">
+            <img src="./images/back.png" data-src="./images/nature 10.avif" class="images"/>
+          </div>
+          <div class="child">
+            <img src="./images/back.png" data-src="./images/nature 1.jpg" class="images" />
+          </div>
+          <div class="child">
+            <img src="./images/back.png" data-src="./images/nature 2.jfif" class="images"/>
+          </div>
+          <div class="child">
+            <img src="./images/back.png" data-src="./images/nature 3.jpeg" class="images"/>
+          </div>
+          <div class="child">
+            <img src="./images/back.png" data-src="./images/nature 4.jpg" class="images"/>
+          </div>
+          <div class="child">
+            <img src="./images/back.png" data-src="./images/nature 5.jpg" class="images"/>
+          </div>
+          <div class="child">
+            <img src="./images/back.png" data-src="./images/nature 6.jpg" class="images"/>
+          </div>
+  
+          <div class="child">
+              <img src="./images/back.png" data-src="./images/nature 7.jpg" class="images"/>
+            </div>
+  
+            <div class="child">
+              <img src="./images/back.png" data-src="./images/nature 8.jfif" class="images"/>
+            </div>
+            <div class="child">
+              <img src="./images/back.png" data-src="./images/nature 9.jpg" class="images"/>
+            </div>
+  
+            <div class="child">
+              <img src="./images/back.png" data-src="./images/nature 10.avif" class="images"/>
+            </div>
+      </div>
+      <script>
+var target = [].slice.call(document.querySelectorAll(".images"));
+var options={
+    threshold:0.91,
+}
+
+/**set up an intersection observer over those images and whenever any of those becomes visible then replace the placeholder image with actual one, remove the non-loaded class & unobserve that element **/
+function intersectionCallback(entries, observer) {
+    entries.forEach(function(entry) {
+        if (entry.isIntersecting) {
+            entry.target.src=entry.target.dataset.src;
+            // lazyImage.classList.remove("lazyLoad");
+            lazyImageObserver.unobserve(lazyImage);
+        }
+    });
+}                 
+let observer = new IntersectionObserver(intersectionCallback,options);
+target.forEach(function(lazyImage) {
+    observer.observe(lazyImage);
+});
+
+      </script>
+    
+</body>
+</html>
