@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Infinite SCrolling</title>
+    <style>
+        .card-container{
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            align-items: flex-start;
+        }
+        .card{
+            background-color: white;
+            border: 1px solid red;
+            border-radius: .25rem;
+            padding: .5rem;
+            transform: translateX(100%);
+            opacity: 0.1;
+            transition: .150s;
+        }
+        .card-show{
+            transform: translateX(0);
+            opacity: 1;
+        }
+
+
+    </style>
+</head>
+<body>
+    <div class="card-container">
+        <div class="card">This is the first card</div>
+        <div class="card">This is a card</div>
+        <div class="card">This is a card</div>
+        <div class="card">This is a card</div>
+        <div class="card">This is a card</div>
+        <div class="card">This is a card</div>
+        <div class="card">This is a card</div>
+        <div class="card">This is a card</div>
+        <div class="card">This is a card</div>
+        <div class="card">This is a card</div>
+        <div class="card">This is a card</div>
+        <div class="card">This is a card</div>
+        <div class="card">This is a card</div>
+        <div class="card">This is a card</div>
+        <div class="card">This is a card</div>
+        <div class="card">This is a card</div>
+        <div class="card">This is a card</div>
+        <div class="card">This is a card</div>
+        <div class="card">This is a card</div>
+        <div class="card">This is a card</div>
+        <div class="card">This is a card</div>
+        <div class="card">This is a card</div>
+        <div class="card">This is a card</div>
+        <div class="card">This is a card</div>
+        <div class="card">This is a card</div>
+        <div class="card">This is a card</div>
+        <div class="card">This is a card</div>
+        <div class="card">This is a card</div>
+        <div class="card">This is a card</div>
+        <div class="card">This is a card</div>
+        <div class="card">This is a card</div>
+        <div class="card">This is a card</div>
+        <div class="card">This is a card</div>
+        <div class="card">This is a card</div>
+        <div class="card">This is a card</div>
+        <div class="card">This is a card</div>
+        <div class="card">This is a card</div>
+        <div class="card">This is a card</div>
+        <div class="card">This is a card</div>
+        <div class="card">This is a card</div>
+      
+        <div class="card">This is a card</div>
+      
+        <div class="card">This is a card</div>
+        <div class="card">This is a card</div>
+        <div class="card">This is a card</div>
+        <div class="card">This is a card</div>
+        <div class="card">This is a card</div>
+        <div class="card">This is a card</div>
+        <div class="card">This is a card</div>
+        <div class="card">This is a card</div>
+        <div class="card">This is a card</div>
+        <div class="card">This is a card</div>
+        <div class="card">This is a card</div>
+        <div class="card">This is a card</div>
+        <div class="card">This is a card</div>
+        <div class="card">This is a card</div>
+        <div class="card">This is a card</div>
+        <div class="card">This is a card</div>
+      
+        <div class="card">This is a card</div>
+        <div class="card">This is a card</div>
+        <div class="card">This is the last card</div>
+    </div>
+
+    <script>
+        let allNodes=document.querySelectorAll('.card');
+        target=[...allNodes];
+        let options={
+            threshold:1,
+            rootMargin:"-200px 0px"
+        }
+        function intersectionCallback(entries,observer){
+            entries.forEach(entry => {
+                if (entry.isIntersecting){
+                    console.log('working');
+                    entry.target.classList.add('card-show');
+                }
+                else{
+                    entry.target.classList.remove('card-show');
+                }
+            });
+
+        }
+        function loadNewCards(ob){
+            for(let i=0;i<=10;i++){
+                const card=document.createElement('div')
+                card.textContent='new card';
+                card.classList.add('card');
+                cardContainer.append(card);
+                observer.observe(card)
+               
+            }
+        }
+        function intersectionLastCard(entries,lastCardObserver){
+            let lastCard=entries[0]
+            if (!lastCard.isIntersecting){
+                return 
+            }
+            loadNewCards(lastCardObserver);
+            // lastCardObserver.unobserve(lastCard.target)
+            lastCardObserver.observe(document.querySelector('.card:last-child'))
+
+        }
+        const observer= new IntersectionObserver(intersectionCallback,options);
+        target.forEach(element => {
+            observer.observe(element);
+            
+        });
+        const lastCardObserver=new IntersectionObserver(intersectionLastCard,{});
+        var cardContainer=document.querySelector('.card-container');
+       
+        lastCardObserver.observe(document.querySelector('.card:last-child'));
+        
+    </script>
+
+
+    
+</body>
+</html>
